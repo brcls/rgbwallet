@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import {Container, Row, Col, Card, Media} from 'react-bootstrap';
 import {
     BrowserRouter as Router,
     Switch,
@@ -41,27 +41,46 @@ function Login(){
 
     return(
         <div className= "Login">
-            <h3>
-                login
-            </h3>
-
-            <form onSubmit={handleLogin}>
-                <p>
-                    Name: <input 
-                        type= "text"
-                        value = {name}
-                        onChange = {e => setName(e.target.value)}
-                        />
-                </p>
-                <p>
-                    Password: <input 
-                        type = "text"
-                        value= {passwd}
-                        onChange= { e=> setPasswd(e.target.value)}
-                        />
-                </p>
-                <input type= "submit" name= "submit" value= "Submit"/>
-            </form>
+            <Container>
+                <Row>
+                    <Col md = {{offset: 4}}>
+                    <h1>
+                        RGBWallet
+                    </h1>
+                    </Col>
+                </Row>
+            </Container>
+            
+            <Container fluid = "md">
+                <Row>
+                    <Col lg= "4" md={{offset: 4}}>
+                        <Card bg= "dark" text="white" border="primary" width={{width: '18rem'}}>
+                            <Card.Header>
+                                Login
+                            </Card.Header>
+                            <Card.Body>
+                                <form onSubmit={handleLogin}>
+                                    <p>
+                                        Name: <input 
+                                        type= "text"
+                                        value = {name}
+                                        onChange = {e => setName(e.target.value)}
+                                        />
+                                    </p>
+                                    <p>
+                                        Password: <input 
+                                        type = "text"
+                                        value= {passwd}
+                                        onChange= { e=> setPasswd(e.target.value)}
+                                        />
+                                    </p>
+                                    <input type= "submit" name= "submit" value= "Submit"/>
+                                </form>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
         </div>
 
     )
