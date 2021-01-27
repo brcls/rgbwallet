@@ -8,9 +8,12 @@ import {
     useHistory
 } from 'react-router-dom';
 
+import Imagem from '../images/Logo.png';
+
 import api from '../connections/api'
 import Admin from './admin'
 import User from './user'
+import '../styles/login.css';
 
 function Login(){
     const [name, setName] = useState('');
@@ -43,44 +46,58 @@ function Login(){
         <div className= "Login">
             <Container>
                 <Row>
-                    <Col md = {{offset: 4}}>
-                    <h1>
-                        RGBWallet
-                    </h1>
+                    <Col xs = "3">
+                        <Media>
+                            <img 
+                            width = {64}
+                            height = {64}
+                            align="center"
+                            src={Imagem}
+                            />
+                        </Media>
+                    </Col>
+                    <Col xs = "7">
+                        <Container>
+                            <Row>
+                                <Col>
+                                <h1>
+                                    RGBWallet
+                                </h1>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs = "6">
+                                    <Card bg= "dark" text="white" border="primary" width={{width: '18rem'}}>
+                                        <Card.Header>
+                                            Login
+                                        </Card.Header>
+                                        <Card.Body>
+                                            <form onSubmit={handleLogin}>
+                                                <p>
+                                                    Name: <input 
+                                                    type= "text"
+                                                    value = {name}
+                                                    onChange = {e => setName(e.target.value)}
+                                                    />
+                                                </p>
+                                                <p>
+                                                    Password: <input 
+                                                    type = "text"
+                                                    value= {passwd}
+                                                    onChange= { e=> setPasswd(e.target.value)}
+                                                    />
+                                                </p>
+                                                <input type= "submit" name= "submit" value= "Submit"/>
+                                            </form>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                            </Row>
+                        </Container>
                     </Col>
                 </Row>
             </Container>
             
-            <Container fluid = "md">
-                <Row>
-                    <Col lg= "4" md={{offset: 4}}>
-                        <Card bg= "dark" text="white" border="primary" width={{width: '18rem'}}>
-                            <Card.Header>
-                                Login
-                            </Card.Header>
-                            <Card.Body>
-                                <form onSubmit={handleLogin}>
-                                    <p>
-                                        Name: <input 
-                                        type= "text"
-                                        value = {name}
-                                        onChange = {e => setName(e.target.value)}
-                                        />
-                                    </p>
-                                    <p>
-                                        Password: <input 
-                                        type = "text"
-                                        value= {passwd}
-                                        onChange= { e=> setPasswd(e.target.value)}
-                                        />
-                                    </p>
-                                    <input type= "submit" name= "submit" value= "Submit"/>
-                                </form>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                </Row>
-            </Container>
         </div>
 
     )
