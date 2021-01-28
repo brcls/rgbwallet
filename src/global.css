@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+body{
+    font: 400 14px Roboto, sans-serif;
+    background: linear-gradient(rgb(255, 255, 113), rgb(233, 177, 255));
+    -webkit-font-smoothing: antialiased;
+}

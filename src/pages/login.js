@@ -44,60 +44,51 @@ function Login(){
 
     return(
         <div className= "Login">
-            <Container>
-                <Row>
-                    <Col xs = "3">
-                        <Media>
-                            <img 
-                            width = {64}
-                            height = {64}
-                            align="center"
-                            src={Imagem}
-                            />
-                        </Media>
-                    </Col>
-                    <Col xs = "7">
-                        <Container>
-                            <Row>
-                                <Col>
-                                <h1>
-                                    RGBWallet
-                                </h1>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs = "6">
-                                    <Card bg= "dark" text="white" border="primary" width={{width: '18rem'}}>
-                                        <Card.Header>
-                                            Login
-                                        </Card.Header>
-                                        <Card.Body>
-                                            <form onSubmit={handleLogin}>
-                                                <p>
-                                                    Name: <input 
-                                                    type= "text"
-                                                    value = {name}
-                                                    onChange = {e => setName(e.target.value)}
-                                                    />
-                                                </p>
-                                                <p>
-                                                    Password: <input 
-                                                    type = "text"
-                                                    value= {passwd}
-                                                    onChange= { e=> setPasswd(e.target.value)}
-                                                    />
-                                                </p>
-                                                <input type= "submit" name= "submit" value= "Submit"/>
-                                            </form>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </Col>
-                </Row>
-            </Container>
-            
+            <section className="grid header">
+                <div className = "item image">
+                    <Media>
+                        <img 
+                        width = {64}
+                        height = {64}
+                        align="center"
+                        src={Imagem}
+                        />
+                    </Media>
+                </div>
+                <div className = "item title">
+                    <h1>
+                        RGBWallet
+                    </h1>
+                </div>
+            </section>
+            <section className="grid forms">
+                <div className="item form">
+                    <Card bg= "dark" text="white" border="primary" width={{width: '18rem'}}>
+                        <Card.Header>
+                            Login
+                        </Card.Header>
+                        <Card.Body>
+                            <form onSubmit={handleLogin}>
+                                <p>
+                                    Name: <input 
+                                    type= "text"
+                                    value = {name}
+                                    onChange = {e => setName(e.target.value)}
+                                    />
+                                </p>
+                                <p>
+                                    Password: <input 
+                                    type = "text"
+                                    value= {passwd}
+                                    onChange= { e=> setPasswd(e.target.value)}
+                                    />
+                                </p>
+                                <input type= "submit" name= "submit" value= "Submit"/>
+                            </form>
+                        </Card.Body>
+                    </Card>
+                </div>
+            </section>
         </div>
 
     )
