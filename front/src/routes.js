@@ -5,9 +5,9 @@ import {
     Switch
 } from 'react-router-dom';
 
-import login from './pages/login';
-import admin from './pages/admin';
-import user from './pages/user';
+import login from './pages/Login';
+import admin from './pages/Admin';
+import user from './pages/User';
 
 function Routes(){
     return(

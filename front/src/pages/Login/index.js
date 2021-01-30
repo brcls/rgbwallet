@@ -1,0 +1,87 @@
+import React, {useState} from 'react';
+import {Container, Row, Col, Card, Media} from 'react-bootstrap';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useHistory
+} from 'react-router-dom';
+
+import Imagem from '../../assets/Logo.png';
+
+import api from '../../services/api'
+
+import './styles.css';
+
+function Login(){
+    const [userName, setuserName] = useState('');
+    const [passwd, setPasswd] = useState('');
+    const history = useHistory();
+    
+    async function handleLogin(event){
+        event.preventDefault();
+        let response = {};
+        const data = {
+            userName, 
+            passwd
+        }
+        console.log(data)
+        try{
+            response = await api.post("/", data);
+            console.log(response);
+        } catch (err){
+            console.log('não deu')
+        }
+        if(response.status != 400){
+            localStorage.setItem("User", JSON.stringify(response.data));
+            if(response.data.admin === true) return (history.push("/admin"));
+            else if(response.data.admin === false) return (history.push("/user"));
+        }
+        else return (history.push("/"));      
+    }
+
+    return(
+        <div className= "Login">
+            <div className="header">
+                        <img 
+                            width = {64}
+                            height = {64}
+                            align="center"
+                            src={Imagem}
+                        />
+                        <div className = "title">
+                            <h1>
+                                RGBWallet
+                            </h1>
+                        </div>
+                        
+            </div>
+            <div className="form">
+                <div>
+                    <h2>
+                        LOGIN
+                    </h2>
+                    <form onSubmit={handleLogin}>
+                        <input
+                            placeholder= "User Name"
+                            type= "text"
+                            value = {userName}
+                            onChange = {e => setuserName(e.target.value)}
+                        />
+                        
+                        <input 
+                            placeholder="Password"
+                            type = "text"
+                            value= {passwd}
+                            onChange= { e=> setPasswd(e.target.value)}
+                        />
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    )
+}
+export default Login;
