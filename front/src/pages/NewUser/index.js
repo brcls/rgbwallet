@@ -35,7 +35,7 @@ function CreateUser() {
                 }
             });
 
-            history.push('/admin');
+            return history.push('/admin');
        }catch(err){
            alert('Erro ao cadastrar caso, tente novamente.');
        }
@@ -44,9 +44,8 @@ function CreateUser() {
     return (
         <div className="new-user-container">
             <div className="content">
-                    
+                
                 <h1>Cadastrar novo user</h1>
-
                 <Link className="back-link" to="/profile/admin">
                     <FiArrowLeft size ={16} color="#E02041" />
                     Voltar para home

@@ -52,9 +52,9 @@ function Admin(){
                         return(
                             <li>
                                 <div className="user">
-                                    <h3>Nome: {user.name}</h3>
-                                    <h4>User Name: {user.userName}</h4>
-                                    <h4>Saldo: {Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(user.saldo) }</h4>
+                                    <h4>{user.name}</h4>
+                                    <h5>User Name: {user.userName}</h5>
+                                    <h5>Saldo: {Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(user.saldo) }</h5>
                                     {user.running ? 
                                         <h5>Executando</h5>
                                         : <h5> Não está Executando</h5>

@@ -1,22 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     outline: 0;
     box-sizing: border-box;
 }
-html{
-    height: 100%;
-}
+
 body{
-    height: 100%;
     font: 400 14px Roboto, sans-serif;
-    background: linear-gradient( #40e0d0,rgb(255, 255, 113));
+    background: linear-gradient(rgb(255, 255, 113), #40e0d0);
     -webkit-font-smoothing: antialiased;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
 }
+
 input, button, textarea{
     font: 400 18px Roboto, sans-serif;
 }
@@ -53,7 +48,7 @@ form textarea{
     border-radius: 8px;
     color: #fff;
     font-weight: bold;
-    margin-top: .5rem;
+    margin-top: 16px;
     display: inline-block;
     text-align: center;
     text-decoration: none;
@@ -69,7 +64,7 @@ form textarea{
 .back-link{
     display: flex;
     align-items: center;
-    margin-top: 1rem;
+    margin-top: 40px;
     color: #41414D;
     font-size: 18px;
     text-decoration: none;
