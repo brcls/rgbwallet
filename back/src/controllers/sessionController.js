@@ -12,7 +12,7 @@ async function login(req, res){
     } catch (err){
         console.log(err)
     }
-    if(result == null) return res.status(400).send();
+    if(result === null) return res.status(400).send();
     else return res.status(200).send(result);
 }
 

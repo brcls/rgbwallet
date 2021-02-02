@@ -1,4 +1,3 @@
-const { json } = require('body-parser');
 const express = require('express');
 const userController = require('../controllers/sessionController');
 const admController = require('../controllers/admController');

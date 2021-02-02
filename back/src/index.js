@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const router = require('./routers/router_login');
+const router = require('./routers/router');
 
 const server = express();
 

@@ -35,27 +35,32 @@ async function create(request, response){
     const {name, userName, month, running, week} = request.body;
     const id = request.headers.authorization;
 
-    const admin = await connection.db('RGBWallet').collection('Usuarios').findOne({_id: ObjectId(id)}, {projection:{passwd:0}})
-
-    if(!admin){
-        console.log("Não achou o Admin.");
-        return response.status(400).send();
-    }else{
-        if(!admin.admin){
+    try{
+        const admin = await client.db('RGBWallet').collection('Usuarios').findOne({_id: ObjectId(id)}, {projection:{passwd:0}})
+        
+        if(!admin){
+            console.log("Não achou o Admin.");
+            return response.status(400).send();
+        }
+        else if(!admin.admin){
             console.log("Não é admin.");
             return response.status(400).send();
-        }else{
-            const res = await connection.db('RGBWallet').collection('Usuarios').insertOne({
-                name, 
-                userName, 
-                month, 
-                running, 
-                week,
-                admin:false,
-                saldo: 0
-            });
         }
-    }
+    } catch (err) { console.log}
+
+    try{
+        await client.db('RGBWallet').collection('Usuarios').insertOne({
+            name, 
+            userName,
+            passwd: "", 
+            month, 
+            running, 
+            week,
+            admin:false,
+            saldo: 0
+        });
+    } catch(err) {console.log(err)}
+    
 
     return response.status(200).send();
 }
