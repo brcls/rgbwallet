@@ -1,12 +1,5 @@
 import React, {useState} from 'react';
-import {Container, Row, Col, Card, Media} from 'react-bootstrap';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useHistory
-} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 import Imagem from '../../assets/Logo.png';
 
@@ -33,7 +26,7 @@ function Login(){
         } catch (err){
             console.log('não deu')
         }
-        if(response.status != 400){
+        if(response.status === 200){
             localStorage.setItem("User", JSON.stringify(response.data));
             if(response.data.admin === true) return (history.push("/admin"));
             else if(response.data.admin === false) return (history.push("/user"));
@@ -72,7 +65,7 @@ function Login(){
                         
                         <input 
                             placeholder="Password"
-                            type = "text"
+                            type = "password"
                             value= {passwd}
                             onChange= { e=> setPasswd(e.target.value)}
                         />

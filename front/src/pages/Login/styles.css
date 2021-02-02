@@ -74,7 +74,7 @@
     padding: 5px;
     background-color: lightgray;
 }
-::placeholder{color:  rgb(61, 60, 60)}
+::placeholder{color:  rgb(49, 48, 48)}
 .form div form button{
     padding: 0.5rem 0;
     background: #b6b6b6;
