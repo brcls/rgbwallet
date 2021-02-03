@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
-import axios from '../../services/api';
+import api from '../../services/api';
 import { FaSignOutAlt } from "react-icons/fa";
 import "./styles.css";
 
@@ -12,7 +12,7 @@ function Admin(){
     
     async function getUsers(){
         try{
-            const response = await axios.get("/admin", {
+            const response = await api.get("/admin", {
                 headers: { Authorization: adm._id}
             });
             setUsers(response.data.response);

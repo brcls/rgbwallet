@@ -6,40 +6,34 @@
     justify-content: start;
     
 }
+
 .header{
-    
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
-    
-
-    
+    justify-content: center;    
 }
-.header .title{
+
+.title{
     grid-column: 2;
     justify-self: center;
     font-family: 'Bebas Neue', cursive;
     margin-top: 8px;
 }
+
 .header img{
     grid-column: 1;
     justify-self: start;
     margin: 5px 15px;
-    /*
-    grid-column: 1;
-    justify-self: start;
-    align-self: center;
-    */
 }
+
 .form{
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-
 }
+
 .form div{
     display: flex;
     flex-direction: column;
@@ -49,22 +43,16 @@
     border-radius: 8px;
     background-color: white;
 }
+
 .form div  h2{
     color: black;
     font-weight: bold;
     padding: 2px;
-
-    /*
-    padding-bottom: 10px;
-    */
 }
 
 .form div form{
     display: flex;
     flex-direction: column;
-    /*
-    margin: 7px;
-    */
 }
 
 .form div form input{
@@ -75,6 +63,7 @@
     background-color: lightgray;
 }
 ::placeholder{color:  rgb(49, 48, 48)}
+
 .form div form button{
     padding: 0.5rem 0;
     background: #b6b6b6;
@@ -89,6 +78,7 @@
     font-size: 14px;
     transition: filter 0.2s;
 }
+
 .form div form button:hover{
     filter: brightness(90%);
 }

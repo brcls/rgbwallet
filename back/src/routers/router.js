@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post("/", userController.login);
 router.get("/admin", admController.getUsers);
-router.post("/admin", admController.create);
+router.post("/admin/new", admController.create);
 
 
 module.exports = router;

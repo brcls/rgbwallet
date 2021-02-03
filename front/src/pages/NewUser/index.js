@@ -29,7 +29,7 @@ function CreateUser() {
        }
 
        try{
-            await api.post('/admin', data, {
+            await api.post('/admin/new', data, {
                 headers: {
                     Authorization: user._id,
                 }
@@ -46,7 +46,7 @@ function CreateUser() {
             <div className="content">
                 
                 <h1>Cadastrar novo user</h1>
-                <Link className="back-link" to="/profile/admin">
+                <Link className="back-link" to="/admin">
                     <FiArrowLeft size ={16} color="#E02041" />
                     Voltar para home
                 </Link>

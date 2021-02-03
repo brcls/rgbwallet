@@ -1,4 +1,4 @@
-const client = require('../connections/database');
+const dbFunctions = require('../connections/database');
 
 async function login(req, res){
     const {userName, passwd} = req.body;
@@ -7,7 +7,7 @@ async function login(req, res){
     console.log(myobj);
     try{
 
-        result = await client.db("RGBWallet").collection("Usuarios").findOne(myobj, {projection:{passwd:0}});
+        result = await dbFunctions.client.db("RGBWallet").collection("Usuarios").findOne(myobj, {projection:{passwd:0}});
         console.log("peguei os dados")
     } catch (err){
         console.log(err)
