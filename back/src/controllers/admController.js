@@ -36,6 +36,7 @@ async function create(request, response){
 
     month = StringToBoolean(month);
     running = StringToBoolean(running);
+    week = parseInt(week);
 
     try{
         await dbFunctions.client.db('RGBWallet').collection('Usuarios').insertOne({
@@ -73,6 +74,11 @@ async function updateUser(request, response){
     const authorization = request.headers.authorization;
     console.log({...rest});
 
+    rest.month = StringToBoolean(rest.month);
+    rest.running = StringToBoolean(rest.running);
+    rest.week = parseInt(rest.week);
+
+
     const verification = dbFunctions.verifyAdmin(authorization);
 
     if(!verification) return response.status(400).send();
@@ -83,5 +89,33 @@ async function updateUser(request, response){
     } catch (err) { console.log(err) }
 }
 
+async function resetSaldo(request, response){
+    const authorization = request.headers.authorization;
 
-module.exports = {getUsers, create, deleteUser, updateUser}; 
+    const verification = dbFunctions.verifyAdmin(authorization);
+
+    if(!verification) return response.status(400).send();
+
+    try{
+        await dbFunctions.client.db("RGBWallet").collection("Usuarios").updateMany({admin: false},{ $set : {saldo: 0}});
+        return response.status(200).send();
+    } catch (err) { console.log(err) }
+}
+
+async function increaseSaldo(request, response){
+    const authorization = request.headers.authorization;
+
+    const verification = dbFunctions.verifyAdmin(authorization);
+    if(!verification) return response.status(400).send();
+
+    try{
+        const users = await dbFunctions.client.db('RGBWallet').collection('Usuarios').find({admin: false});
+        users.forEach( async (user) => {
+            user.saldo += (40 + (5*user.week))*(1+(user.month && 0,2) + (user.running && 0,1));
+            await dbFunctions.client.db('RGBWallet').collection('Usuarios').updateOne({_id: ObjectId(user._id)},{ $set : {saldo: user.saldo}});
+        })
+        return response.status(200).send();
+    } catch(err) { console.log(err) }
+    
+}
+module.exports = {getUsers, create, deleteUser, updateUser, resetSaldo, increaseSaldo}; 

@@ -8,6 +8,8 @@ router.post("/", userController.login);
 router.get("/admin", admController.getUsers);
 router.delete("/admin", admController.deleteUser);
 router.put("/admin/user", admController.updateUser);
+router.put("/admin/zerarsaldo", admController.resetSaldo);
+router.put("/admin/aumentarsaldo", admController.increaseSaldo);
 router.post("/admin/new", admController.create);
 
 
