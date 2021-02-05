@@ -1,6 +1,11 @@
 const dbFunctions = require('../connections/database');
 const ObjectId = require('mongodb').ObjectId;
 
+function StringToBoolean(string){
+    if(string === "true") return true;
+    else return false;
+}
+
 async function getUsers(req, res){
     let response = [];
     let counter = null;
@@ -29,6 +34,9 @@ async function create(request, response){
 
     if(!verification) return res.status(400).send();
 
+    month = StringToBoolean(month);
+    running = StringToBoolean(running);
+
     try{
         await dbFunctions.client.db('RGBWallet').collection('Usuarios').insertOne({
             name, 
@@ -46,4 +54,34 @@ async function create(request, response){
     return response.status(200).send();
 }
 
-module.exports = {getUsers, create}; 
+async function deleteUser(request, response){
+    const _id = request.body._id;
+    const authorization = request.headers.authorization;
+
+    const verification = dbFunctions.verifyAdmin(authorization);
+
+    if(!verification) return response.status(400).send();
+
+    try{
+        await dbFunctions.client.db('RGBWallet').collection('Usuarios').deleteOne( {_id: ObjectId(_id)} );
+        return response.status(200).send();
+    } catch (err) { console.log(err)}
+}
+
+async function updateUser(request, response){
+    const {_id, ...rest} = request.body;
+    const authorization = request.headers.authorization;
+    console.log({...rest});
+
+    const verification = dbFunctions.verifyAdmin(authorization);
+
+    if(!verification) return response.status(400).send();
+
+    try{
+        await dbFunctions.client.db("RGBWallet").collection("Usuarios").updateOne({_id: ObjectId(_id)}, { $set : {...rest} });
+        return response.status(200).send();
+    } catch (err) { console.log(err) }
+}
+
+
+module.exports = {getUsers, create, deleteUser, updateUser}; 
