@@ -114,7 +114,11 @@ async function increaseSaldo(request, response){
     try{
         const users = await dbFunctions.client.db('RGBWallet').collection('Usuarios').find({admin: false});
         users.forEach( async (user) => {
-            user.saldo += (40 + (5*user.week))*(1+(user.month && 0,2) + (user.running && 0,1));
+            let taxa = 1;
+            if(user.month) taxa += 0.2;
+            if(user.running) taxa += 0.1;
+            user.saldo += (40 + (5*user.week))*taxa;
+
             await dbFunctions.client.db('RGBWallet').collection('Usuarios').updateOne({_id: ObjectId(user._id)},{ $set : {saldo: user.saldo}});
         })
         return response.status(200).send();

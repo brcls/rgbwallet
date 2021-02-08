@@ -38,6 +38,35 @@ function Admin(){
         } catch (err) {console.log(err)}
     }
 
+    async function handleResetAllBalance(){
+        try{
+                await api.put("/admin/zerarsaldo", {
+                headers: { Authorization: adm._id } 
+            })
+
+            setUsers(users.map( user => {
+                user.saldo = 0;
+                return user;
+            }));
+        } catch (err) {console.log(err)}
+    }
+
+    async function handleIncreaseBalance(){
+        try{
+                await api.put("/admin/aumentarsaldo", {
+                headers: { Authorization: adm._id }
+            })
+
+            setUsers(users.map( user => {
+                let taxa = 1;
+                if(user.month) taxa += 0.2;
+                if(user.running) taxa += 0.1;
+                user.saldo += (40 + (5*user.week))*taxa;
+                return user;
+            }));
+        } catch (err) {console.log(err)}
+    }
+
     function handleEdit(user){
         localStorage.setItem("userEdited", JSON.stringify(user));
         history.push("/admin/editUser");
@@ -59,7 +88,10 @@ function Admin(){
                     <button id="register" onClick={handleRegistration}> ADD USER</button>
                     <button id="logout" onClick={handleLogout}> <FaSignOutAlt size= "2rem"/> </button>
                 </div>
-               
+
+                <button id="reset" onClick={handleResetAllBalance}>Zerar</button>
+                <button id="increase" onClick={handleIncreaseBalance}>Incrementar Saldo</button>
+
             </div>
             <div className="users">
                 <ul className="table">
