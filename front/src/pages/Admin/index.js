@@ -67,6 +67,17 @@ function Admin(){
                         return(
                             <li>
                                 <div className="user">
+                                    <h4><strong>{user.name}</strong></h4>
+                                    <h5><strong>User Name:</strong> {user.userName}</h5>
+                                    <h5><strong>Saldo:</strong> {Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(user.saldo) }</h5>
+                                    <h5><strong>Semanas com 10 horas:</strong> {user.week}</h5>
+                                    {user.running ? 
+                                        <h5><strong>Executando</strong></h5>
+                                        : <h5><strong>Não está Executando</strong></h5>}
+                                    {user.month ?
+                                        <h5><strong>Vendeu projeto no mês</strong></h5>
+                                        : <h5><strong>Não vendeu projeto no mês</strong></h5>
+                                    }
                                     <div className="user-buttons">
                                         <button id="edit" onClick={ ()=>{handleEdit(user)} }>
                                             <FaPencilAlt size="1rem" />
@@ -75,18 +86,6 @@ function Admin(){
                                             <FaTrash size="1rem" />
                                         </button>
                                     </div>
-                                    <h4>{user.name}</h4>
-                                    <h5>User Name: {user.userName}</h5>
-                                    <h5>Saldo: {Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(user.saldo) }</h5>
-                                    {user.running ? 
-                                        <h5>Executando</h5>
-                                        : <h5> Não está Executando</h5>
-                                    }
-                                    {user.month ?
-                                        <h5>Vendeu projeto no mês</h5>
-                                        : <h5> Não vendeu projeto no mês</h5>
-                                    }
-                                    <h5>Semanas com 10 horas: {user.week}</h5>
                                 </div>
                             </li>
                         )

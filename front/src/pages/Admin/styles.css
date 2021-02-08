@@ -62,16 +62,35 @@
     background-color: rgb(240, 233, 233);
     width: 100%;
     height: 100%;
-    padding: .5rem;
+    padding: 1rem;
 
-    border-radius: 2rem;
+    border-radius: 1rem;
 }
 .user-buttons{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    /*justify-content: flex-end;*/   
 }
 #trash, #edit{
-    margin: 0 5%;
     border: transparent;
-    background: transparent;
+    padding: .2rem;
+    border-radius: .2rem;
+    transition: 0.3s;
+}
+#trash:hover, #edit:hover{
+    filter: brightness(90%);
+}
+
+
+
+#edit{
+    color: #3b1ad1;
+    background-color: #b4a8ec;
+    
+}
+
+#trash{
+    background-color: #f7aaaa;
+    color: #b41a1a;
 }
