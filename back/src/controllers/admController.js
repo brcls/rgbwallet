@@ -10,6 +10,7 @@ async function getUsers(req, res){
     let response = [];
     let counter = null;
     const id = req.headers.authorization;
+    console.log(id);
 
     const verification = dbFunctions.verifyAdmin(id);
 
@@ -32,7 +33,7 @@ async function create(request, response){
 
     const verification = dbFunctions.verifyAdmin(id);
 
-    if(!verification) return res.status(400).send();
+    if(!verification) return response.status(400).send();
 
     month = StringToBoolean(month);
     running = StringToBoolean(running);
@@ -57,9 +58,10 @@ async function create(request, response){
 
 async function deleteUser(request, response){
     const _id = request.body._id;
-    const authorization = request.headers.authorization;
+    const id = request.headers.authorization;
+    console.log(id, _id);
 
-    const verification = dbFunctions.verifyAdmin(authorization);
+    const verification = dbFunctions.verifyAdmin(id);
 
     if(!verification) return response.status(400).send();
 
@@ -70,6 +72,7 @@ async function deleteUser(request, response){
 }
 
 async function updateUser(request, response){
+    console.log("body", request.body);
     const {_id, ...rest} = request.body;
     const authorization = request.headers.authorization;
     console.log({...rest});

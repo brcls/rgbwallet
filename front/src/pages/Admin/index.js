@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import api from '../../services/api';
-import { FaSignOutAlt } from "react-icons/fa";
+import { FaSignOutAlt , FaTrash , FaPencilAlt} from "react-icons/fa";
 import "./styles.css";
 
 
@@ -28,6 +28,21 @@ function Admin(){
         return history.push("/");
     }
 
+    async function handleDelete(_id){
+        try{
+                await api.delete("/admin", {
+                headers: { Authorization: adm._id } , data :  {_id: _id} 
+            })
+
+            setUsers(users.filter( user => user._id !== _id));
+        } catch (err) {console.log(err)}
+    }
+
+    function handleEdit(user){
+        localStorage.setItem("userEdited", JSON.stringify(user));
+        history.push("/admin/editUser");
+    }
+
     useEffect(async () =>{
         if(adm === null) return history.push("chome://new-tab-page/");
         else await getUsers() 
@@ -52,6 +67,14 @@ function Admin(){
                         return(
                             <li>
                                 <div className="user">
+                                    <div className="user-buttons">
+                                        <button id="edit" onClick={ ()=>{handleEdit(user)} }>
+                                            <FaPencilAlt size="1rem" />
+                                        </button>
+                                        <button id="trash" onClick={ ()=>{handleDelete(user._id)} }>
+                                            <FaTrash size="1rem" />
+                                        </button>
+                                    </div>
                                     <h4>{user.name}</h4>
                                     <h5>User Name: {user.userName}</h5>
                                     <h5>Saldo: {Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(user.saldo) }</h5>
