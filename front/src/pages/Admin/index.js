@@ -114,6 +114,7 @@ function Admin(){
                                             }
                                         </div>
                                     </div>
+
                                     <div className="user-buttons">
                                         <button id="edit" onClick={ ()=>{handleEdit(user)} }>
                                             <FaPencilAlt size="1rem" />
