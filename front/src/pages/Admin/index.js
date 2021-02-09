@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import api from '../../services/api';
-import { FaSignOutAlt , FaTrash , FaPencilAlt} from "react-icons/fa";
+import { FaSignOutAlt , FaTrash , FaPencilAlt, FaCreativeCommonsZero, FaUserPlus, FaHandHoldingUsd, FaCalendarCheck, FaLaptopCode} from "react-icons/fa";
 import "./styles.css";
 
 
@@ -81,16 +81,15 @@ function Admin(){
     return(
         <div className="admin">
             <div className="header-admin">
-                <h2>
+                <strong>
                     Olá, {adm.name}
-                </h2>
+                </strong>
                 <div className="buttons">
-                    <button id="register" onClick={handleRegistration}> ADD USER</button>
+                    <button id="register" onClick={handleRegistration}> <FaUserPlus size= "2rem"/> </button>
+                    <button id="reset" onClick={handleResetAllBalance}> <FaCreativeCommonsZero size= "2rem"/></button>
+                    <button id="increase" onClick={handleIncreaseBalance}><FaHandHoldingUsd size= "2rem"/></button>
                     <button id="logout" onClick={handleLogout}> <FaSignOutAlt size= "2rem"/> </button>
                 </div>
-
-                <button id="reset" onClick={handleResetAllBalance}>Zerar</button>
-                <button id="increase" onClick={handleIncreaseBalance}>Incrementar Saldo</button>
 
             </div>
             <div className="users">
@@ -99,6 +98,22 @@ function Admin(){
                         return(
                             <li>
                                 <div className="user">
+                                    <div className="info">
+                                        <h4><strong>{user.name}</strong></h4>
+                                        <h5><strong>User:</strong> {user.userName}</h5>
+                                        <h5><strong>Saldo:</strong> {Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(user.saldo) }</h5>
+                                        <h5><strong>Semanas com 10 horas:</strong> {user.week}</h5>
+                                        <div className="icons">
+                                            {user.running ? 
+                                                <h5 className="executando"><FaLaptopCode color="green" size="2rem"/></h5>
+                                                : <h5 className="executando"><FaLaptopCode color="red" size="2rem"/></h5>
+                                            }
+                                            {user.month ?
+                                                <h5 className="mes"><FaCalendarCheck color="green" size="2rem"/></h5>
+                                                : <h5 className="mes"> <FaCalendarCheck color="red" size="2rem"/></h5>
+                                            }
+                                        </div>
+                                    </div>
                                     <div className="user-buttons">
                                         <button id="edit" onClick={ ()=>{handleEdit(user)} }>
                                             <FaPencilAlt size="1rem" />
@@ -107,18 +122,6 @@ function Admin(){
                                             <FaTrash size="1rem" />
                                         </button>
                                     </div>
-                                    <h4>{user.name}</h4>
-                                    <h5>User Name: {user.userName}</h5>
-                                    <h5>Saldo: {Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(user.saldo) }</h5>
-                                    {user.running ? 
-                                        <h5>Executando</h5>
-                                        : <h5> Não está Executando</h5>
-                                    }
-                                    {user.month ?
-                                        <h5>Vendeu projeto no mês</h5>
-                                        : <h5> Não vendeu projeto no mês</h5>
-                                    }
-                                    <h5>Semanas com 10 horas: {user.week}</h5>
                                 </div>
                             </li>
                         )

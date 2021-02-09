@@ -2,32 +2,22 @@
     height:100vh;
     display: flex;
     flex-direction: column;
-    
-    justify-content: start;
-    
 }
 
 .header{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: center;    
-}
-
-.title{
-    grid-column: 2;
-    justify-self: center;
-    font-family: 'Bebas Neue', cursive;
-    margin-top: 8px;
-}
-
-.header img{
-    grid-column: 1;
-    justify-self: start;
-    margin: 5px 15px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    margin: 5rem auto;
+    padding: 1rem;
+    border-radius: 500px;
+    background: linear-gradient(rgb(255, 255, 113), #40e0d0);
+    box-shadow: 0 0 70px rgba(0, 0, 0, 0.1);
 }
 
 .form{
-    height: 100vh;
+    height: 45vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,7 +31,8 @@
     align-items: center;
     padding: 25px;
     border-radius: 8px;
-    background-color: white;
+    background-color: #f0f0f5;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .form div  h2{
@@ -56,20 +47,20 @@
 }
 
 .form div form input{
-    border-radius: 15px;
+    border-radius: 100px;
     border: transparent;
-    margin: 7px 0;
-    padding: 5px;
-    background-color: lightgray;
+    margin: 5px 0;
+    padding: 1rem;
+    background-color: rgb(219, 218, 218);
 }
-::placeholder{color:  rgb(49, 48, 48)}
+::placeholder{color:  rgb(138, 138, 138)}
 
 .form div form button{
     padding: 0.5rem 0;
-    background: #b6b6b6;
+    background:#f0f0f5;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     border: 0;
     border-radius: 15px;
-    color: rgb(49, 48, 48);
     font-weight: bold;
     margin-top: 16px;
     display: inline-block;
