@@ -37,23 +37,17 @@ function Login(){
     return(
         <div className= "Login">
             <div className="header">
-                        <img 
-                            width = {64}
-                            height = {64}
-                            align="center"
-                            src={Imagem}
-                        />
-                        <div className = "title">
-                            <h1>
-                                RGBWallet
-                            </h1>
-                        </div>
-                        
+                <img 
+                    width = {225}
+                    height = {225}
+                    align="center"
+                    src={Imagem}
+                /> 
             </div>
             <div className="form">
                 <div>
                     <h2>
-                        LOGIN
+                        Login
                     </h2>
                     <form onSubmit={handleLogin}>
                         <input

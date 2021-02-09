@@ -17,6 +17,7 @@ function CreateUser() {
     const history = useHistory();
 
     const user = JSON.parse(localStorage.getItem('User'));
+
     async function handleNewUser(e) {
         console.log(user._id)
        e.preventDefault();
@@ -45,13 +46,13 @@ function CreateUser() {
     return (
         <div className="new-user-container">
             <div className="content">
-                
-                <h1>Cadastrar novo user</h1>
-                <Link className="back-link" to="/admin">
-                    <FiArrowLeft size ={16} color="#E02041" />
-                    Voltar para home
-                </Link>
-
+                <div className="teste">
+                    <h1>Cadastrar novo user</h1>
+                    <Link className="back-link" to="/admin">
+                        <FiArrowLeft size ={16} color="#E02041" />
+                        Voltar para home
+                    </Link>
+                </div>
                 <form onSubmit={handleNewUser}>
                     <input 
                         placeholder="Nome"

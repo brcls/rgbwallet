@@ -9,39 +9,96 @@
 .header-admin{
     width: 100%;
     display: grid;
+    margin-top: 1rem;
     grid-template-columns: repeat(3, 1fr);
 }
 
-.header-admin h2{
+.header-admin strong{
     grid-column: 1;
     align-self: center;
-
-    margin: 1rem;
+    font-size: 250%;
+    margin-left: 2rem;
 }
 .buttons{
+    margin-left: 20rem;
     grid-column: 3;
     align-self: center;
 
     display: flex;
-    justify-content: space-between;
 }
+
 #register{
+    background-color: #f0f0f5;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     height:fit-content;
     width:fit-content;
     border: transparent;
-    border-radius: 5px;
-    padding: .5rem;
-    font-size: 1.5rem;
-    margin-left: 1rem;
+    border-radius: 100px;
+    padding: 1rem;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+    transition: filter 0.3s;
 }
+
+#register:hover{
+    filter: brightness(90%);
+}
+
+#reset{
+    background-color: #f5f0f0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    height:fit-content;
+    width:fit-content;
+    border: transparent;
+    border-radius: 100px;
+    padding: 1rem;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+    transition: filter 0.3s;
+}
+
+#reset:hover{
+    filter: brightness(90%);
+}
+
+#increase{
+    border:transparent;
+    background-color: #f5f0f0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    height:fit-content;
+    width:fit-content;
+    border: transparent;
+    border-radius: 100px;
+    padding: 1rem;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+    transition: filter 0.3s;
+}
+
+#increase:hover{
+    filter: brightness(90%);
+}
+
 #logout{
     border:transparent;
-    background: transparent;
-    margin-right: 1rem;
+    background-color: #f5f0f0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    height:fit-content;
+    width:fit-content;
+    border: transparent;
+    border-radius: 100px;
+    padding: 1rem;
+    margin-right: 0rem;
+    margin-top: 1rem;
+    transition: filter 0.3s;
+}
+
+#logout:hover{
+    filter: brightness(90%);
 }
 
 .users{
-    margin-top: .5rem;
+    margin-top: 4rem;
     width: 100%;
     display: flex;
     align-items: center;
@@ -59,38 +116,62 @@
 }
 
 .user{
-    background-color: rgb(240, 233, 233);
+    background-color: #f0f0f5;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     width: 100%;
     height: 100%;
     padding: 1rem;
 
-    border-radius: 1rem;
+    border-radius: 10px;
+    display: flex;
 }
 .user-buttons{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    /*justify-content: flex-end;*/   
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5rem;
 }
-#trash, #edit{
-    border: transparent;
-    padding: .2rem;
-    border-radius: .2rem;
-    transition: 0.3s;
+
+#edit{
+    border:transparent;
+    background-color: #f5f0f0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    height:fit-content;
+    width:fit-content;
+    border-radius: 100px;
+    padding: 1rem;
+    margin-left: 0rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: filter 0.3s;
 }
-#trash:hover, #edit:hover{
+
+#edit:hover{
     filter: brightness(90%);
 }
 
-
-
-#edit{
-    color: #3b1ad1;
-    background-color: #b4a8ec;
-    
+#trash{
+    border:transparent;
+    background-color: #f5f0f0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    height:fit-content;
+    width:fit-content;
+    border-radius: 100px;
+    padding: 1rem;
+    margin-left: 0rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: filter 0.3s;
 }
 
-#trash{
-    background-color: #f7aaaa;
-    color: #b41a1a;
+#trash:hover{
+    filter: brightness(90%);
+}
+
+.icons{
+    display: flex;
+}
+
+.executando{
+    margin-right: 1rem;
+
 }
