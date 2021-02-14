@@ -28,8 +28,10 @@ async function getUsers(req, res){
 }
 
 async function create(request, response){
+
     let {name, userName, month, running, week} = request.body;
     const id = request.headers.authorization;
+    console.log(id);
 
     const verification = dbFunctions.verifyAdmin(id);
 

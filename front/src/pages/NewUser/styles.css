@@ -7,12 +7,15 @@
 
     display: flex;
     align-content: center;
+    align-items: center;
     justify-content: center;
 }
 
 .content{
-    width: 100%;
-    padding: 10rem;
+
+    height: fit-content;
+    width: 60%;
+    padding: 1rem;
     background: #f0f0f5;
     box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
     border-radius: 7px;
@@ -64,6 +67,9 @@
         transition: filter 0.2s;
 }
 
-.content .setValue:hover{
-        filter: brightness(90%);
+
+.setValue:hover{
+    filter: brightness(90%);
 }
+
+

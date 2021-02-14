@@ -17,11 +17,16 @@ function CreateUser() {
     const [botaoApertadoSim2, setBotaoApertadoSim2] = useState(false);
     const [botaoApertadoNao2, setBotaoApertadoNao2] = useState(false);
 
+    const [month, setMonth] = useState(false);
+    const [running, setRunning] = useState(false);
+    const [week, setWeek] = useState(0);
+
     const history = useHistory();
 
     const user = JSON.parse(localStorage.getItem('User'));
 
     async function handleNewUser(e) {
+        console.log(user._id)
        e.preventDefault();
 
        const data = {
@@ -48,13 +53,13 @@ function CreateUser() {
     return (
         <div className="new-user-container">
             <div className="content">
-                <div className="top">
-                    <h1>Cadastrar novo user</h1>
-                    <Link className="back-link" to="/admin">
-                        <FiArrowLeft size ={16} color="#E02041" />
-                        Voltar para home
-                    </Link>
-                </div>
+                
+                <h1>Cadastrar novo user</h1>
+                <Link className="back-link" to="/admin">
+                    <FiArrowLeft size ={16} color="#E02041" />
+                    Voltar para home
+                </Link>
+            
                 <form onSubmit={handleNewUser}>
                     <input 
                         placeholder="Nome"

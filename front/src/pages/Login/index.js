@@ -38,8 +38,9 @@ function Login(){
         <div className= "Login">
             <div className="header">
                 <img 
-                    width = "250px"
-                    height = "250px"
+
+                    width = "120px"
+                    height = "120px"
                     align="center"
                     src={Imagem}
                 /> 
