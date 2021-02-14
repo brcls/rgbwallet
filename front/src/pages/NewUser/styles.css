@@ -12,33 +12,38 @@
 }
 
 .content{
+
     height: fit-content;
     width: 60%;
     padding: 1rem;
     background: #f0f0f5;
     box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
     border-radius: 7px;
+    margin: 2rem auto;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
-.back-link{
-    margin-bottom: 1rem;
+.top{
+    margin-top: 5rem;
+    margin-right: 16rem;
 }
 
-.teste h1{
-    margin: 0;
+.top h1{
     font-size: 30px;
+}
+
+.content form input{
+    margin-top: 1rem;
 }
 
 .content form p{
     font-size: 20px;
     color: #5d5d5d;
     line-height: 100%;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
 }
 
 .content form section{
@@ -46,14 +51,14 @@
     justify-content: space-between;
 } 
 
-.setValue{
+.content .setValue{
         background: #b6b6b6;
         width: 49%;
         border: 0;
         border-radius: 8px;
         color: #fff;
         font-weight: bold;
-        margin-top: .5rem;
+        margin-top: 0rem;
         display: inline-block;
         text-align: center;
         text-decoration: none;
@@ -62,9 +67,9 @@
         transition: filter 0.2s;
 }
 
+
 .setValue:hover{
     filter: brightness(90%);
 }
-
 
 

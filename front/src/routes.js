@@ -15,7 +15,7 @@ import EditUser from './pages/EditUser';
 
 const isLogged = ()=>{
     let usuario = localStorage.getItem("User");
-    if(!usuario) return false;
+    if(!usuario && usuario.admin == false) return false;
     
     return true;
 }
