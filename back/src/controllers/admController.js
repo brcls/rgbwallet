@@ -12,14 +12,13 @@ async function getUsers(req, res){
     const id = req.headers.authorization;
     console.log(id);
 
-    const verification = dbFunctions.verifyAdmin(id);
+    const verification = await dbFunctions.verifyAdmin(id);
 
-    if(!verification) return res.status(400).send();
+    if(!verification) return res.status(401).send();
 
     try{
         counter = await dbFunctions.client.db('RGBWallet').collection('Usuarios').countDocuments({admin: false});
         response = await dbFunctions.client.db('RGBWallet').collection('Usuarios').find({admin: false}, {projection: {passwd: 0}}).toArray();
-        console.log(response);
     } catch(e){
         console.log(e);
     }
@@ -33,9 +32,9 @@ async function create(request, response){
     const id = request.headers.authorization;
     console.log(id);
 
-    const verification = dbFunctions.verifyAdmin(id);
+    const verification = await dbFunctions.verifyAdmin(id);
 
-    if(!verification) return response.status(400).send();
+    if(!verification) return response.status(401).send();
 
     month = StringToBoolean(month);
     running = StringToBoolean(running);
@@ -63,9 +62,9 @@ async function deleteUser(request, response){
     const id = request.headers.authorization;
     console.log(id, _id);
 
-    const verification = dbFunctions.verifyAdmin(id);
+    const verification = await dbFunctions.verifyAdmin(id);
 
-    if(!verification) return response.status(400).send();
+    if(!verification) return response.status(401).send();
 
     try{
         await dbFunctions.client.db('RGBWallet').collection('Usuarios').deleteOne( {_id: ObjectId(_id)} );
@@ -84,9 +83,9 @@ async function updateUser(request, response){
     rest.week = parseInt(rest.week);
 
 
-    const verification = dbFunctions.verifyAdmin(authorization);
+    const verification = await dbFunctions.verifyAdmin(authorization);
 
-    if(!verification) return response.status(400).send();
+    if(!verification) return response.status(401).send();
 
     try{
         await dbFunctions.client.db("RGBWallet").collection("Usuarios").updateOne({_id: ObjectId(_id)}, { $set : {...rest} });
@@ -97,9 +96,9 @@ async function updateUser(request, response){
 async function resetSaldo(request, response){
     const authorization = request.headers.authorization;
 
-    const verification = dbFunctions.verifyAdmin(authorization);
+    const verification = await dbFunctions.verifyAdmin(authorization);
 
-    if(!verification) return response.status(400).send();
+    if(!verification) return response.status(401).send();
 
     try{
         await dbFunctions.client.db("RGBWallet").collection("Usuarios").updateMany({admin: false},{ $set : {saldo: 0}});
@@ -110,8 +109,8 @@ async function resetSaldo(request, response){
 async function increaseSaldo(request, response){
     const authorization = request.headers.authorization;
 
-    const verification = dbFunctions.verifyAdmin(authorization);
-    if(!verification) return response.status(400).send();
+    const verification = await dbFunctions.verifyAdmin(authorization);
+    if(!verification) return response.status(401).send();
 
     try{
         const users = await dbFunctions.client.db('RGBWallet').collection('Usuarios').find({admin: false});

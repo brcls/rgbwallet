@@ -42,6 +42,7 @@ function Login(){
                     height = "120px"
                     align="center"
                     src={Imagem}
+                    alt="simbolo da ej"
                 /> 
             </div>
             <div className="form">

@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
 import api from '../../services/api';

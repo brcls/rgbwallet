@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
@@ -42,6 +42,8 @@ function CreateUser() {
            alert('Erro ao cadastrar caso, tente novamente.');
        }
     }
+
+    
 
     return (
         <div className="new-user-container">

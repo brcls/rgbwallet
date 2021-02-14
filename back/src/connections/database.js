@@ -6,19 +6,31 @@ const ObjectId = require('mongodb').ObjectID;
 client.connect();
 
 async function verifyAdmin(id){
-    try{
-        const admin = await client.db("RGBWallet").collection("Usuarios").findOne({ _id: ObjectId(id)}, {projection:{passwd: 0}});
-        if(!admin){
-            console.log("Nao achou nada");
-
+    console.log("id na verificacao é ",  typeof id);
+    console.log(id == 'undefined')
+    if(id == 'undefined') {
+        console.log("entrei aqui");
+        return false;
+    }
+    else{
+        try{
+            const admin = await client.db("RGBWallet").collection("Usuarios").findOne({ _id: ObjectId(id)}, {projection:{passwd: 0}});
+            if(!admin){
+                console.log("Nao achou nada");
+    
+                return false;
+            }
+            else if(!admin.admin){
+                console.log("Nao é admin");
+    
+                return false;
+            }
+        } catch(e) {
+            console.log(e)
             return false;
         }
-        else if(!admin.admin){
-            console.log("Nao é admin");
-
-            return false;
-        }
-    } catch(e) {console.log(e)}
-    return true;
+        return true;
+    }
+    
 }
 module.exports = {client, verifyAdmin};

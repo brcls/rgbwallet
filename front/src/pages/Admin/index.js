@@ -10,6 +10,8 @@ function Admin(){
     const[users, setUsers] = useState([]);
     const adm = JSON.parse(localStorage.getItem("User"));
     
+
+    
     async function getUsers(){
         try{
             const response = await api.get("/admin", {
@@ -73,8 +75,7 @@ function Admin(){
     }
 
     useEffect(async () =>{
-        if(adm === null) return history.push("chome://new-tab-page/");
-        else await getUsers() 
+        await getUsers() 
     },[]);
     
     
