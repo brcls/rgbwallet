@@ -7,10 +7,12 @@
 
     display: flex;
     align-content: center;
+    align-items: center;
     justify-content: center;
 }
 
 .content{
+    height: fit-content;
     width: 60%;
     padding: 1rem;
     background: #f0f0f5;

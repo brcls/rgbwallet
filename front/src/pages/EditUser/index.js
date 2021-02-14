@@ -49,10 +49,10 @@ function EditUSer() {
     }
 
     return (
-        <div className="new-user-container">
+        <div className="edit-user-container">
             <div className="content">
                 
-                <h1>Cadastrar novo user</h1>
+                <h1>Editar Usuário</h1>
                 <button className="back-link" onClick={handleLeavePage}>
                     <FiArrowLeft size ={16} color="#E02041" />
                     Voltar para home

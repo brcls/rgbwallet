@@ -46,13 +46,13 @@ function CreateUser() {
     return (
         <div className="new-user-container">
             <div className="content">
-                <div className="teste">
-                    <h1>Cadastrar novo user</h1>
-                    <Link className="back-link" to="/admin">
-                        <FiArrowLeft size ={16} color="#E02041" />
-                        Voltar para home
-                    </Link>
-                </div>
+                
+                <h1>Cadastrar novo user</h1>
+                <Link className="back-link" to="/admin">
+                    <FiArrowLeft size ={16} color="#E02041" />
+                    Voltar para home
+                </Link>
+            
                 <form onSubmit={handleNewUser}>
                     <input 
                         placeholder="Nome"

@@ -2,22 +2,21 @@
     height:100vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
 }
 
 .header{
     display: flex;
-    flex-direction: column;
-    align-content: center;
     justify-content: center;
-    margin: 5rem auto;
-    padding: 1rem;
+}
+.header img{
+    padding: 5px;
     border-radius: 500px;
     background: linear-gradient(rgb(255, 255, 113), #40e0d0);
     box-shadow: 0 0 70px rgba(0, 0, 0, 0.1);
 }
 
 .form{
-    height: 45vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

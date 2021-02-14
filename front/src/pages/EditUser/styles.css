@@ -1,16 +1,18 @@
 
-.new-user-container{
+.edit-user-container{
     width: 100%;
     max-width: 1120px;
-    height: 100vh;
     margin: 0 auto;
+    height: 100vh;
 
     display: flex;
     align-content: center;
+    align-items: center;
     justify-content: center;
 }
 
 .content{
+    height: fit-content;
     width: 60%;
     padding: 1rem;
     background: #f0f0f5;
