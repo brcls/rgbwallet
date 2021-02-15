@@ -1,3 +1,7 @@
+/**
+ * Página do Administrador
+ */
+
 import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import api from '../../services/api';
@@ -9,9 +13,7 @@ function Admin(){
     const history = useHistory();
     const[users, setUsers] = useState([]);
     const adm = JSON.parse(localStorage.getItem("User"));
-    
-
-    
+      
     async function getUsers(){
         try{
             const response = await api.get("/admin", {
@@ -42,9 +44,9 @@ function Admin(){
 
     async function handleResetAllBalance(){
         try{
-                await api.put("/admin/zerarsaldo", {
-                headers: { Authorization: adm._id } 
-            })
+                await api.put("/admin/zerarsaldo",{},{
+                    headers: { Authorization: adm._id } 
+                });
 
             setUsers(users.map( user => {
                 user.saldo = 0;
@@ -55,9 +57,9 @@ function Admin(){
 
     async function handleIncreaseBalance(){
         try{
-                await api.put("/admin/aumentarsaldo", {
-                headers: { Authorization: adm._id }
-            })
+                await api.put("/admin/aumentarsaldo",{},{
+                    headers: { Authorization: adm._id }
+                })
 
             setUsers(users.map( user => {
                 let taxa = 1;

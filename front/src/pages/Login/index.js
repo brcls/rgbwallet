@@ -1,3 +1,7 @@
+/**
+ * Pagina de login
+ */
+
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 
@@ -19,10 +23,8 @@ function Login(){
             userName, 
             passwd
         }
-        console.log(data)
         try{
             response = await api.post("/", data);
-            console.log(response);
         } catch (err){
             console.log('não deu')
         }

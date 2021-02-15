@@ -1,14 +1,16 @@
+/**
+ * Arquivo que contém as funções de sessão, que no caso é apenas a de login
+ */
+
 const dbFunctions = require('../connections/database');
 
 async function login(req, res){
     const {userName, passwd} = req.body;
     const myobj = {userName, passwd};
     let result = {};
-    console.log(myobj);
+    
     try{
-
         result = await dbFunctions.client.db("RGBWallet").collection("Usuarios").findOne(myobj, {projection:{passwd:0}});
-        console.log("peguei os dados")
     } catch (err){
         console.log(err)
     }

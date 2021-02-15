@@ -1,3 +1,7 @@
+/**
+ * Arquivo principal que chama as rotas e realiza os server.use
+ */
+
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');

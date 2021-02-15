@@ -73,3 +73,19 @@
     filter: brightness(90%);
 }
 
+@media screen and (max-height: 580px){
+    .header img{
+        height: 80px;
+        width: 80px;
+    }
+
+    .form div h2{
+        font-size: 25px;
+    }
+
+    .form div form input{
+        height: 40px;
+        padding: .3rem;
+    }
+}
+

@@ -1,4 +1,8 @@
-import React, {useEffect, useState} from "react";
+/**
+ * Pagina de Edição do Usuário
+ */
+
+import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
@@ -18,7 +22,6 @@ function EditUSer() {
     const [botaoApertadoNao, setBotaoApertadoNao] = useState(false);
     const [botaoApertadoSim2, setBotaoApertadoSim2] = useState(false);
     const [botaoApertadoNao2, setBotaoApertadoNao2] = useState(false);
-
     const history = useHistory();
 
 

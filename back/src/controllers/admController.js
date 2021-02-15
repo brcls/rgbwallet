@@ -1,3 +1,8 @@
+/**
+ * Arquivo que contém as funções executadas quando o adm faz um acesso ao bd
+ */
+
+
 const dbFunctions = require('../connections/database');
 const ObjectId = require('mongodb').ObjectId;
 
@@ -9,16 +14,15 @@ function StringToBoolean(string){
 async function getUsers(req, res){
     let response = [];
     let counter = null;
-    const id = req.headers.authorization;
-    console.log(id);
+    const auth = req.headers.authorization;
 
-    const verification = await dbFunctions.verifyAdmin(id);
+    const verification = await dbFunctions.verifyAdmin(auth);
 
     if(!verification) return res.status(401).send();
 
     try{
-        counter = await dbFunctions.client.db('RGBWallet').collection('Usuarios').countDocuments({admin: false});
-        response = await dbFunctions.client.db('RGBWallet').collection('Usuarios').find({admin: false}, {projection: {passwd: 0}}).toArray();
+        counter = await dbFunctions.client.db("RGBWallet").collection("Usuarios").countDocuments({admin: false});
+        response = await dbFunctions.client.db("RGBWallet").collection("Usuarios").find({admin: false}, {projection: {passwd: 0}}).toArray();
     } catch(e){
         console.log(e);
     }
@@ -26,13 +30,12 @@ async function getUsers(req, res){
     return res.send(data);
 }
 
-async function create(request, response){
+async function CreateUser(request, response){
 
     let {name, userName, month, running, week} = request.body;
-    const id = request.headers.authorization;
-    console.log(id);
+    const auth = request.headers.authorization;
 
-    const verification = await dbFunctions.verifyAdmin(id);
+    const verification = await dbFunctions.verifyAdmin(auth);
 
     if(!verification) return response.status(401).send();
 
@@ -41,7 +44,7 @@ async function create(request, response){
     week = parseInt(week);
 
     try{
-        await dbFunctions.client.db('RGBWallet').collection('Usuarios').insertOne({
+        await dbFunctions.client.db("RGBWallet").collection("Usuarios").insertOne({
             name, 
             userName,
             passwd: "", 
@@ -59,31 +62,28 @@ async function create(request, response){
 
 async function deleteUser(request, response){
     const _id = request.body._id;
-    const id = request.headers.authorization;
-    console.log(id, _id);
+    const auth = request.headers.authorization;
 
-    const verification = await dbFunctions.verifyAdmin(id);
+    const verification = await dbFunctions.verifyAdmin(auth);
 
     if(!verification) return response.status(401).send();
 
     try{
-        await dbFunctions.client.db('RGBWallet').collection('Usuarios').deleteOne( {_id: ObjectId(_id)} );
+        await dbFunctions.client.db("RGBWallet").collection("Usuarios").deleteOne( {_id: ObjectId(_id)} );
         return response.status(200).send();
     } catch (err) { console.log(err)}
 }
 
 async function updateUser(request, response){
-    console.log("body", request.body);
     const {_id, ...rest} = request.body;
-    const authorization = request.headers.authorization;
-    console.log({...rest});
 
     rest.month = StringToBoolean(rest.month);
     rest.running = StringToBoolean(rest.running);
     rest.week = parseInt(rest.week);
 
+    const auth = request.headers.authorization;
 
-    const verification = await dbFunctions.verifyAdmin(authorization);
+    const verification = await dbFunctions.verifyAdmin(auth);
 
     if(!verification) return response.status(401).send();
 
@@ -94,9 +94,9 @@ async function updateUser(request, response){
 }
 
 async function resetSaldo(request, response){
-    const authorization = request.headers.authorization;
-
-    const verification = await dbFunctions.verifyAdmin(authorization);
+    const auth = request.headers.authorization;
+    
+    const verification = await dbFunctions.verifyAdmin(auth);
 
     if(!verification) return response.status(401).send();
 
@@ -107,23 +107,24 @@ async function resetSaldo(request, response){
 }
 
 async function increaseSaldo(request, response){
-    const authorization = request.headers.authorization;
+    const auth = request.headers.authorization;
 
-    const verification = await dbFunctions.verifyAdmin(authorization);
+    const verification = await dbFunctions.verifyAdmin(auth);
+
     if(!verification) return response.status(401).send();
 
     try{
-        const users = await dbFunctions.client.db('RGBWallet').collection('Usuarios').find({admin: false});
+        const users = await dbFunctions.client.db("RGBWallet").collection("Usuarios").find({admin: false});
         users.forEach( async (user) => {
             let taxa = 1;
             if(user.month) taxa += 0.2;
             if(user.running) taxa += 0.1;
             user.saldo += (40 + (5*user.week))*taxa;
 
-            await dbFunctions.client.db('RGBWallet').collection('Usuarios').updateOne({_id: ObjectId(user._id)},{ $set : {saldo: user.saldo}});
+            await dbFunctions.client.db("RGBWallet").collection("Usuarios").updateOne({_id: ObjectId(user._id)},{ $set : {saldo: user.saldo}});
         })
         return response.status(200).send();
     } catch(err) { console.log(err) }
     
 }
-module.exports = {getUsers, create, deleteUser, updateUser, resetSaldo, increaseSaldo}; 
+module.exports = {getUsers, CreateUser, deleteUser, updateUser, resetSaldo, increaseSaldo}; 

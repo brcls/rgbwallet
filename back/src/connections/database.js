@@ -1,3 +1,11 @@
+/**
+ * Arquivo responsável por realizar as configurações iniciais do BD
+ */
+
+
+ /**
+  * Obtendo Cliente do Mongo DB
+  */
 
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://gabriel:123456ga.@gvrcluster.u6svv.mongodb.net/RGBWallet?retryWrites=true&w=majority";
@@ -5,11 +13,12 @@ const client = new MongoClient(uri, { useUnifiedTopology: true}, { useNewUrlPars
 const ObjectId = require('mongodb').ObjectID;
 client.connect();
 
+/**
+ * Função que verifica no bd se a pessoa com tal id é admin
+ */
+
 async function verifyAdmin(id){
-    console.log("id na verificacao é ",  typeof id);
-    console.log(id == 'undefined')
     if(id == 'undefined') {
-        console.log("entrei aqui");
         return false;
     }
     else{
@@ -33,4 +42,4 @@ async function verifyAdmin(id){
     }
     
 }
-module.exports = {client, verifyAdmin};
+module.exports = {client , verifyAdmin};

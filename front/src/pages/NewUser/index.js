@@ -1,7 +1,10 @@
-import React, {useState, useEffect} from "react";
+/**
+ * Pagina de Criação de um Usuário
+ */
+
+import React, {useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
-import ReactDOM from 'react-dom'
 import api from '../../services/api';
 
 import './styles.css';
@@ -9,24 +12,19 @@ import './styles.css';
 function CreateUser() {
     const [name, setName] = useState('');
     const [userName, setUserName] = useState('');
-    const [month, setMonth] = useState('');
-    const [running, setRunning] = useState('');
-    const [week, setWeek] = useState('');
+    const [month, setMonth] = useState(false);
+    const [running, setRunning] = useState(false);
+    const [week, setWeek] = useState(0);
     const [botaoApertadoSim, setBotaoApertadoSim] = useState(false);
     const [botaoApertadoNao, setBotaoApertadoNao] = useState(false);
     const [botaoApertadoSim2, setBotaoApertadoSim2] = useState(false);
     const [botaoApertadoNao2, setBotaoApertadoNao2] = useState(false);
-
-    const [month, setMonth] = useState(false);
-    const [running, setRunning] = useState(false);
-    const [week, setWeek] = useState(0);
 
     const history = useHistory();
 
     const user = JSON.parse(localStorage.getItem('User'));
 
     async function handleNewUser(e) {
-        console.log(user._id)
        e.preventDefault();
 
        const data = {
