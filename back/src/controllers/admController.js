@@ -14,11 +14,7 @@ function StringToBoolean(string){
 async function getUsers(req, res){
     let response = [];
     let counter = null;
-    const auth = req.headers.authorization;
-
-    const verification = await dbFunctions.verifyAdmin(auth);
-
-    if(!verification) return res.status(401).send();
+    
 
     try{
         counter = await dbFunctions.client.db("RGBWallet").collection("Usuarios").countDocuments({admin: false});
@@ -33,11 +29,7 @@ async function getUsers(req, res){
 async function CreateUser(request, response){
 
     let {name, userName, month, running, week} = request.body;
-    const auth = request.headers.authorization;
-
-    const verification = await dbFunctions.verifyAdmin(auth);
-
-    if(!verification) return response.status(401).send();
+    
 
     month = StringToBoolean(month);
     running = StringToBoolean(running);
@@ -62,11 +54,7 @@ async function CreateUser(request, response){
 
 async function deleteUser(request, response){
     const _id = request.body._id;
-    const auth = request.headers.authorization;
-
-    const verification = await dbFunctions.verifyAdmin(auth);
-
-    if(!verification) return response.status(401).send();
+    
 
     try{
         await dbFunctions.client.db("RGBWallet").collection("Usuarios").deleteOne( {_id: ObjectId(_id)} );
@@ -81,11 +69,7 @@ async function updateUser(request, response){
     rest.running = StringToBoolean(rest.running);
     rest.week = parseInt(rest.week);
 
-    const auth = request.headers.authorization;
-
-    const verification = await dbFunctions.verifyAdmin(auth);
-
-    if(!verification) return response.status(401).send();
+    
 
     try{
         await dbFunctions.client.db("RGBWallet").collection("Usuarios").updateOne({_id: ObjectId(_id)}, { $set : {...rest} });
@@ -94,11 +78,6 @@ async function updateUser(request, response){
 }
 
 async function resetSaldo(request, response){
-    const auth = request.headers.authorization;
-    
-    const verification = await dbFunctions.verifyAdmin(auth);
-
-    if(!verification) return response.status(401).send();
 
     try{
         await dbFunctions.client.db("RGBWallet").collection("Usuarios").updateMany({admin: false},{ $set : {saldo: 0}});
@@ -107,12 +86,7 @@ async function resetSaldo(request, response){
 }
 
 async function increaseSaldo(request, response){
-    const auth = request.headers.authorization;
-
-    const verification = await dbFunctions.verifyAdmin(auth);
-
-    if(!verification) return response.status(401).send();
-
+    
     try{
         const users = await dbFunctions.client.db("RGBWallet").collection("Usuarios").find({admin: false});
         users.forEach( async (user) => {
