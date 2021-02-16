@@ -64,6 +64,8 @@
         transition: filter 0.2s;
 }
 
-.content .setValue:hover{
-        filter: brightness(90%);
+.setValue:hover{
+    filter: brightness(90%);
 }
+
+

@@ -9,19 +9,23 @@ import './styles.css';
 function CreateUser() {
     const [name, setName] = useState('');
     const [userName, setUserName] = useState('');
-    const [month, setMonth] = useState('');
-    const [running, setRunning] = useState('');
-    const [week, setWeek] = useState('');
     const [botaoApertadoSim, setBotaoApertadoSim] = useState(false);
     const [botaoApertadoNao, setBotaoApertadoNao] = useState(false);
     const [botaoApertadoSim2, setBotaoApertadoSim2] = useState(false);
     const [botaoApertadoNao2, setBotaoApertadoNao2] = useState(false);
+
+    //variavel que representa se vendeu projeto no mes
+    const [month, setMonth] = useState(false);
+    const [running, setRunning] = useState(false);
+    const [week, setWeek] = useState(0);
+
 
     const history = useHistory();
 
     const user = JSON.parse(localStorage.getItem('User'));
 
     async function handleNewUser(e) {
+        console.log(user._id)
        e.preventDefault();
 
        const data = {
