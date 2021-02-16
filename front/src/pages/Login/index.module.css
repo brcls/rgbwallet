@@ -2,22 +2,21 @@
     height:100vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
 }
 
 .header{
     display: flex;
-    flex-direction: column;
-    align-content: center;
     justify-content: center;
-    margin: 5rem auto;
-    padding: 1rem;
+}
+.header img{
+    padding: 5px;
     border-radius: 500px;
     background: linear-gradient(rgb(255, 255, 113), #40e0d0);
     box-shadow: 0 0 70px rgba(0, 0, 0, 0.1);
 }
 
 .form{
-    height: 45vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -72,5 +71,21 @@
 
 .form div form button:hover{
     filter: brightness(90%);
+}
+
+@media screen and (max-height: 580px){
+    .header img{
+        height: 80px;
+        width: 80px;
+    }
+
+    .form div h2{
+        font-size: 25px;
+    }
+
+    .form div form input{
+        height: 40px;
+        padding: .3rem;
+    }
 }
 
