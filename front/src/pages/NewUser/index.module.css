@@ -1,16 +1,17 @@
-
-.new-user-container{
+.new_user_container{
     width: 100%;
     max-width: 1120px;
-    height: 100vh;
     margin: 0 auto;
+    height: 100vh;
 
     display: flex;
     align-content: center;
+    align-items: center;
     justify-content: center;
 }
 
 .content{
+    height: min-content;
     width: 60%;
     padding: 1rem;
     background: #f0f0f5;
@@ -22,8 +23,11 @@
     justify-content: space-between;
     align-items: center;
 }
+.content input{
+    height: 40px;
+}
 
-.back-link{
+.back_link{
     margin-bottom: 1rem;
 }
 
@@ -45,22 +49,32 @@
 } 
 
 .setValue{
-        background: #b6b6b6;
-        width: 49%;
-        border: 0;
-        border-radius: 8px;
-        color: #fff;
-        font-weight: bold;
-        margin-top: .5rem;
-        display: inline-block;
-        text-align: center;
-        text-decoration: none;
-        font-size: 18px;
-        line-height: 3rem;
-        transition: filter 0.2s;
+    height: 40px;
+    background: #b6b6b6;
+    width: 49%;
+    border: 0;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 18px;
+    transition: filter 0.2s;
 }
 
 .setValue:hover{
         filter: brightness(90%);
 }
 
+.back_link{
+    border: transparent;
+}
+
+@media screen and (max-height: 580px){
+    .content h1{
+        font-size: 20px;
+    }
+    .content input{
+        height: 30px;
+    }
+
+}

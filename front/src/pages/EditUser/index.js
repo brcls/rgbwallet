@@ -1,10 +1,15 @@
-import React, {useState, useEffect} from "react";
-import { Link, useHistory } from "react-router-dom";
+/**
+ * Pagina de Edição do Usuário
+ */
+
+import React, {useState} from "react";
+import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
 import api from '../../services/api';
 
-import './styles.css';
+import styles from "./index.module.css";
+import global from "../../App.module.css";
 
 function EditUSer() {
     const adm = JSON.parse(localStorage.getItem('User'));
@@ -14,7 +19,10 @@ function EditUSer() {
     const [month, setMonth] = useState(user.month);
     const [running, setRunning] = useState(user.running);
     const [week, setWeek] = useState(user.week);
-
+    const [botaoApertadoSim, setBotaoApertadoSim] = useState(false);
+    const [botaoApertadoNao, setBotaoApertadoNao] = useState(false);
+    const [botaoApertadoSim2, setBotaoApertadoSim2] = useState(false);
+    const [botaoApertadoNao2, setBotaoApertadoNao2] = useState(false);
     const history = useHistory();
 
 
@@ -49,11 +57,11 @@ function EditUSer() {
     }
 
     return (
-        <div className="new-user-container">
-            <div className="content">
-                
-                <h1>Cadastrar novo user</h1>
-                <button className="back-link" onClick={handleLeavePage}>
+        <div className={styles.edit_user_container}>
+            <div className={styles.content}>
+            
+                <h1>Editar Usuário</h1>
+                <button className={global.back_link} onClick={handleLeavePage}>
                     <FiArrowLeft size ={16} color="#E02041" />
                     Voltar para home
                 </button>
@@ -70,23 +78,22 @@ function EditUSer() {
                         onChange={e => setUserName(e.target.value)}
                     />
                     <p>Vendeu algum projeto no mês?</p>
-                    <section>
-                        <button className="setValue" type="button" value= {true} onClick={e => setMonth(e.target.value)}>
+                    <section>   
+                        <button className={styles.setValue}style={{backgroundColor: botaoApertadoSim ? 'green': '#b6b6b6'}} type="button" value= {true} onClick={e => {setMonth(e.target.value); setBotaoApertadoSim(true); setBotaoApertadoNao(false)}}>
                             Sim
                         </button>
-
-                        <button className="setValue" type="button" value= {false} onClick={e => setMonth(e.target.value)}>
+                        <button className={styles.setValue} style={{backgroundColor: botaoApertadoNao ? 'red': '#b6b6b6'}} type="button" value= {false} onClick={e => {setMonth(e.target.value); setBotaoApertadoNao(true); setBotaoApertadoSim(false)}}>
                             Não
                         </button>
                     </section>
                     
                     <p>Executando algum projeto?</p>
                     <section>
-                        <button className="setValue" type="button" value= {true} onClick={e => setRunning(e.target.value)}>
-                        Sim
+                        <button className={styles.setValue} style={{backgroundColor: botaoApertadoSim2 ? 'green': '#b6b6b6'}} type="button" value= {true} onClick={e => {setRunning(e.target.value); setBotaoApertadoSim2(true); setBotaoApertadoNao2(false)}}>
+                            Sim
                         </button>
 
-                        <button className="setValue" type="button" value= {false} onClick={e => setRunning(e.target.value)}>
+                        <button className={styles.setValue} style={{backgroundColor: botaoApertadoNao2 ? 'red': '#b6b6b6'}} type="button" value= {false} onClick={e => {setRunning(e.target.value); setBotaoApertadoNao2(true); setBotaoApertadoSim2(false)}}>
                             Não
                         </button>
                     </section>
@@ -98,7 +105,7 @@ function EditUSer() {
                         onChange={e => setWeek(e.target.value)}
                     />
 
-                    <button className="button" type="submit">Cadastrar</button>
+                    <button className={global.button} type="submit">Atualizar</button>
 
                 </form>
             </div>

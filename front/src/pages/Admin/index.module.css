@@ -1,0 +1,144 @@
+.admin{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.header_admin{
+    width: 100%;
+    display: grid;
+    margin-top: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.header_admin strong{
+    grid-column: 1;
+    align-self: center;
+    font-size: 250%;
+    margin-left: 2rem;
+}
+.buttons{
+    grid-column: 3;
+    justify-self: flex-end;
+    display: flex;
+}
+
+#register, #reset, #increase, #logout{
+    background-color: #f0f0f5;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    height:fit-content;
+    width:fit-content;
+    border: transparent;
+    border-radius: 100px;
+    padding: 1rem;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+    transition: filter 0.3s;
+}
+
+#register:hover, #reset:hover, #increase:hover, #logout:hover{
+    filter: brightness(90%);
+}
+
+.users{
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.table{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 1rem;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+
+    list-style-type: none;
+}
+
+.user{
+    background-color: #f0f0f5;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    min-width: 350px;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+
+    border-radius: 10px;
+    display: flex;
+}
+.user_buttons{
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5rem;
+}
+
+#edit, #trash{
+    border:transparent;
+    background-color: #f5f0f0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    height:fit-content;
+    width:fit-content;
+    border-radius: 100px;
+    padding: 1rem;
+    margin-left: 0rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: filter 0.3s;
+}
+
+#edit:hover, #trash:hover{
+    filter: brightness(90%);
+}
+
+.icons{
+    display: flex;
+}
+
+.executando{
+    margin-right: 1rem;
+}
+
+@media (max-width: 1100px){
+    .table{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width: 800px){
+    .table{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 470px){
+    .header_admin{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .header_admin strong{
+        margin-left: 0;
+    }
+
+    .user{
+        flex-direction: column;
+    }
+
+    .user_buttons{
+        flex-direction: row;
+        margin-left: 0;
+        justify-content: space-around;
+    }
+
+
+}
+
+@media (max-width: 365px){
+    .user{
+        min-width: 295px;
+    }
+
+}

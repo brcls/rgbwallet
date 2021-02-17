@@ -1,3 +1,7 @@
+/**
+ * Pagina de login
+ */
+
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 
@@ -5,7 +9,7 @@ import Imagem from '../../assets/Logo.png';
 
 import api from '../../services/api'
 
-import './styles.css';
+import styles from "./index.module.css";
 
 function Login(){
     const [userName, setuserName] = useState('');
@@ -19,10 +23,8 @@ function Login(){
             userName, 
             passwd
         }
-        console.log(data)
         try{
             response = await api.post("/", data);
-            console.log(response);
         } catch (err){
             console.log('não deu')
         }
@@ -35,25 +37,21 @@ function Login(){
     }
 
     return(
-        <div className= "Login">
-            <div className="header">
-                        <img 
-                            width = {64}
-                            height = {64}
-                            align="center"
-                            src={Imagem}
-                        />
-                        <div className = "title">
-                            <h1>
-                                RGBWallet
-                            </h1>
-                        </div>
-                        
+        <div className= {styles.Login}>
+            <div className={styles.header}>
+                <img 
+
+                    width = "200px"
+                    height = "200px"
+                    align="center"
+                    src={Imagem}
+                    alt="simbolo da ej"
+                /> 
             </div>
-            <div className="form">
+            <div className={styles.form}>
                 <div>
                     <h2>
-                        LOGIN
+                        Login
                     </h2>
                     <form onSubmit={handleLogin}>
                         <input

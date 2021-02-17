@@ -1,0 +1,27 @@
+[33m7b6c4ec[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m merging entre commit do botao e commit das paginas privadas
+[33m08e1eb9[m Ajustando rotas privadas
+[33mf094145[m[33m ([m[1;31morigin/main[m[33m)[m Merge pull request #2 from gabriel-vr/erick_branch
+[33mad085fe[m[33m ([m[1;31morigin/erick_branch[m[33m)[m Merge branch 'main' into erick_branch
+[33m84bbb71[m Adicionando coloraçao no botao
+[33m29aebc3[m Ajustando responsividade
+[33m8c6d8f8[m Merge pull request #1 from brcls/erick_branch
+[33m4931eb0[m Merge branch 'main' into erick_branch
+[33m85a6fe8[m Estilizando os cards
+[33m43e614c[m Botão front de zerar saldo e incrementar
+[33m8c8b4da[m Editando botoes de edicao e delete
+[33m2bb044b[m Criando funções de editar e remover usuarios no front end
+[33meb94413[m Criando funçoes de zerar e aumentar saldo
+[33maa9ae02[m Criando funçoes de remocao e update de usuario
+[33m0476f11[m Melhor modularização do código
+[33m1b11b29[m Back funcional
+[33m0e2844d[m Tela de login ajustada
+[33ma4cd0dc[m adicionando a tela de cadastramento
+[33ma5b44d0[m Mudança de tela de login
+[33me11975d[m Tela de user acoplada
+[33m7524b91[m Pasta com front e end juntos
+[33m8310d75[m Estilizaçao com degrade
+[33m99e602f[m Estilizaçao com css
+[33mde41a94[m Login estilizado com bootstrap
+[33ma1c28e4[m[33m ([m[1;32mmaster[m[33m)[m Versao com colunas e containers
+[33m2bf900e[m Front end com login
+[33m6139fd8[m Initialize project using Create React App
