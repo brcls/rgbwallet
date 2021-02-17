@@ -1,5 +1,5 @@
 
-.edit-user-container{
+.edit_user_container{
     width: 100%;
     max-width: 1120px;
     margin: 0 auto;
@@ -28,7 +28,7 @@
     height: 40px;
 }
 
-.back-link{
+.back_link{
     margin-bottom: 1rem;
 }
 
@@ -67,7 +67,7 @@
         filter: brightness(90%);
 }
 
-.back-link{
+.back_link{
     border: transparent;
 }
 

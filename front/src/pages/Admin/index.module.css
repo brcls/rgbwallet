@@ -4,14 +4,14 @@
     align-items:center;
 }
 
-.header-admin{
+.header_admin{
     width: 100%;
     display: grid;
     margin-top: 1rem;
     grid-template-columns: repeat(3, 1fr);
 }
 
-.header-admin strong{
+.header_admin strong{
     grid-column: 1;
     align-self: center;
     font-size: 250%;
@@ -68,7 +68,7 @@
     border-radius: 10px;
     display: flex;
 }
-.user-buttons{
+.user_buttons{
     display: flex;
     flex-direction: column;
     margin-left: 1.5rem;
@@ -113,13 +113,13 @@
 }
 
 @media (max-width: 470px){
-    .header-admin{
+    .header_admin{
         display:flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-    .header-admin strong{
+    .header_admin strong{
         margin-left: 0;
     }
 
@@ -127,7 +127,7 @@
         flex-direction: column;
     }
 
-    .user-buttons{
+    .user_buttons{
         flex-direction: row;
         margin-left: 0;
         justify-content: space-around;
@@ -135,4 +135,10 @@
 
 
 }
-       
+
+@media (max-width: 365px){
+    .user{
+        min-width: 295px;
+    }
+
+}

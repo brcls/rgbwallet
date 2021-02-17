@@ -8,7 +8,8 @@ import { FiArrowLeft } from "react-icons/fi";
 
 import api from '../../services/api';
 
-import './styles.css';
+import styles from "./index.module.css";
+import global from "../../App.module.css";
 
 function EditUSer() {
     const adm = JSON.parse(localStorage.getItem('User'));
@@ -56,13 +57,11 @@ function EditUSer() {
     }
 
     return (
-        <div className="edit-user-container">
-            <div className="content">
-                
-
+        <div className={styles.edit_user_container}>
+            <div className={styles.content}>
+            
                 <h1>Editar Usuário</h1>
-
-                <button className="back-link" onClick={handleLeavePage}>
+                <button className={global.back_link} onClick={handleLeavePage}>
                     <FiArrowLeft size ={16} color="#E02041" />
                     Voltar para home
                 </button>
@@ -80,21 +79,21 @@ function EditUSer() {
                     />
                     <p>Vendeu algum projeto no mês?</p>
                     <section>   
-                        <button className="setValue" style={{backgroundColor: botaoApertadoSim ? 'green': '#b6b6b6'}} type="button" value= {true} onClick={e => {setMonth(e.target.value); setBotaoApertadoSim(true); setBotaoApertadoNao(false)}}>
+                        <button className={styles.setValue}style={{backgroundColor: botaoApertadoSim ? 'green': '#b6b6b6'}} type="button" value= {true} onClick={e => {setMonth(e.target.value); setBotaoApertadoSim(true); setBotaoApertadoNao(false)}}>
                             Sim
                         </button>
-                        <button className="setValue" style={{backgroundColor: botaoApertadoNao ? 'red': '#b6b6b6'}} type="button" value= {false} onClick={e => {setMonth(e.target.value); setBotaoApertadoNao(true); setBotaoApertadoSim(false)}}>
+                        <button className={styles.setValue} style={{backgroundColor: botaoApertadoNao ? 'red': '#b6b6b6'}} type="button" value= {false} onClick={e => {setMonth(e.target.value); setBotaoApertadoNao(true); setBotaoApertadoSim(false)}}>
                             Não
                         </button>
                     </section>
                     
                     <p>Executando algum projeto?</p>
                     <section>
-                        <button className="setValue" style={{backgroundColor: botaoApertadoSim2 ? 'green': '#b6b6b6'}} type="button" value= {true} onClick={e => {setRunning(e.target.value); setBotaoApertadoSim2(true); setBotaoApertadoNao2(false)}}>
+                        <button className={styles.setValue} style={{backgroundColor: botaoApertadoSim2 ? 'green': '#b6b6b6'}} type="button" value= {true} onClick={e => {setRunning(e.target.value); setBotaoApertadoSim2(true); setBotaoApertadoNao2(false)}}>
                             Sim
                         </button>
 
-                        <button className="setValue" style={{backgroundColor: botaoApertadoNao2 ? 'red': '#b6b6b6'}} type="button" value= {false} onClick={e => {setRunning(e.target.value); setBotaoApertadoNao2(true); setBotaoApertadoSim2(false)}}>
+                        <button className={styles.setValue} style={{backgroundColor: botaoApertadoNao2 ? 'red': '#b6b6b6'}} type="button" value= {false} onClick={e => {setRunning(e.target.value); setBotaoApertadoNao2(true); setBotaoApertadoSim2(false)}}>
                             Não
                         </button>
                     </section>
@@ -106,7 +105,7 @@ function EditUSer() {
                         onChange={e => setWeek(e.target.value)}
                     />
 
-                    <button className="button" type="submit">Cadastrar</button>
+                    <button className={global.button} type="submit">Atualizar</button>
 
                 </form>
             </div>

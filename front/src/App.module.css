@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +16,7 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
 input, button, textarea{
     font: 400 18px Roboto, sans-serif;
 }
@@ -30,17 +32,7 @@ form input{
     border: 1px solid #dcdce3;
     border-radius: 8px;
     padding: 0 24px;
-}
-
-form textarea{
-    width: 100%;
-    resize: vertical;
-    min-height: 140px;
-    color: #333;
-    border: 1px solid #dcdce3;
-    border-radius: 8px;
-    padding: 16px 24px;
-    line-height: 24px;
+    margin-top: 2%;
 }
 
 .button {
@@ -51,7 +43,7 @@ form textarea{
     border-radius: 8px;
     color: #fff;
     font-weight: bold;
-    margin-top: .5rem;
+    margin-top: 2%;
     display: inline-block;
     text-align: center;
     text-decoration: none;
@@ -64,7 +56,7 @@ form textarea{
     filter: brightness(90%);
 }
 
-.back-link{
+.back_link{
     display: flex;
     align-items: center;
     margin-top: 1rem;
@@ -73,19 +65,21 @@ form textarea{
     text-decoration: none;
     font-weight: 500;
     transition: opacity 0.2s;
+    background-color: transparent;
+    border: transparent;
 }
 
-.back-link svg{
+.back_link svg{
     margin-right: 8px;
 }
 
-.back-link:hover{
+.back_link:hover{
     opacity: 0.8;
 }
 
 @media screen and (max-height: 580px){
 
-    .back-link{
+    .back_link{
         margin-top: .3rem;
         margin-bottom: 0;
         font-size: 15px;

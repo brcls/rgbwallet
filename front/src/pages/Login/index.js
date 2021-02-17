@@ -9,7 +9,7 @@ import Imagem from '../../assets/Logo.png';
 
 import api from '../../services/api'
 
-import './styles.css';
+import styles from "./index.module.css";
 
 function Login(){
     const [userName, setuserName] = useState('');
@@ -37,18 +37,18 @@ function Login(){
     }
 
     return(
-        <div className= "Login">
-            <div className="header">
+        <div className= {styles.Login}>
+            <div className={styles.header}>
                 <img 
 
-                    width = "120px"
-                    height = "120px"
+                    width = "200px"
+                    height = "200px"
                     align="center"
                     src={Imagem}
                     alt="simbolo da ej"
                 /> 
             </div>
-            <div className="form">
+            <div className={styles.form}>
                 <div>
                     <h2>
                         Login

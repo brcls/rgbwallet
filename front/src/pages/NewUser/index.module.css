@@ -1,5 +1,4 @@
-
-.new-user-container{
+.new_user_container{
     width: 100%;
     max-width: 1120px;
     margin: 0 auto;
@@ -28,7 +27,7 @@
     height: 40px;
 }
 
-.back-link{
+.back_link{
     margin-bottom: 1rem;
 }
 
@@ -62,12 +61,11 @@
     transition: filter 0.2s;
 }
 
-
 .setValue:hover{
         filter: brightness(90%);
 }
 
-.back-link{
+.back_link{
     border: transparent;
 }
 
